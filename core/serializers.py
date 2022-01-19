@@ -3,7 +3,13 @@ from rest_framework import serializers
 from core.models import Producer
 
 
-class ProducerSerializer(serializers.HyperlinkedModelSerializer):
+class ProducerListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Producer
+        fields = ["id"]
+
+
+class ProducerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Producer
         fields = "__all__"
