@@ -1,3 +1,4 @@
+import uuid
 import datetime
 
 from django.db import models
@@ -15,6 +16,7 @@ class Region(models.Model):
 
 
 class Classification(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     TYPE_CHOICES = [
         ("AOC", "AOC"),
         ("AOP", "AOP"),
@@ -39,6 +41,7 @@ class Classification(models.Model):
 
 
 class Color(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=150, unique=True)
 
     def __str__(self):
@@ -46,6 +49,7 @@ class Color(models.Model):
 
 
 class Producer(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(null=True, blank=True, max_length=255)
     domain = models.CharField(null=True, blank=True, max_length=255)
     address = models.CharField(null=True, blank=True, max_length=2048)
@@ -65,6 +69,7 @@ class Producer(models.Model):
 
 
 class Wine(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(null=True, blank=True, max_length=255)
     vintage = models.IntegerField(validators=[MinValueValidator(1900), MaxValueValidator(datetime.date.today().year)])
     color = models.ForeignKey(Color, on_delete=models.CASCADE, related_name="wines")
