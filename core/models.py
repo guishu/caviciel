@@ -61,6 +61,8 @@ class Producer(models.Model):
     class Meta:
         constraints = [
             models.UniqueConstraint(fields=['name', 'domain'], name='unique_name_domain'),
+            models.UniqueConstraint(fields=['name'], condition=Q(domain__isnull=True), name='unique_name'),
+            models.UniqueConstraint(fields=['domain'], condition=Q(name__isnull=True), name='unique_domain'),
             models.CheckConstraint(check=Q(name__isnull=False) | Q(domain__isnull=False), name='not_both_null')
         ]
 
