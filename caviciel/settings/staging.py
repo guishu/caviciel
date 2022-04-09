@@ -5,7 +5,7 @@ ALLOWED_HOSTS = [os.getenv('ALLOWED_HOSTS')]
 DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'caviciel',
+            'NAME': os.getenv('PG_DB_NAME'),
             'USER': os.getenv('PG_USER'),
             'PASSWORD': os.getenv('PG_PASSWORD'),
             'HOST': os.getenv('PG_HOST'),
