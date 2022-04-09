@@ -1,1 +1,1 @@
-web: gunicorn --env DJANGO_SETTINGS_MODULE=caviciel.settings.staging.py caviciel.wsgi
+web: gunicorn --env DJANGO_SETTINGS_MODULE=caviciel.settings.staging caviciel.wsgi
