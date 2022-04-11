@@ -18,6 +18,7 @@ INSTALLED_APPS = [
     # External
     'rest_framework',
     'phonenumber_field',
+    'corsheaders',
     # Internal
     'core'
 ]
@@ -25,6 +26,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -70,3 +72,5 @@ REST_FRAMEWORK = {
     ),
     'EXCEPTION_HANDLER': 'core.exception_handler.custom_exception_handler'
 }
+
+CORS_ALLOW_ALL_ORIGINS = True
