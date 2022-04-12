@@ -1,17 +1,9 @@
 from .base import *
+import dj_database_url
 
 ALLOWED_HOSTS = [os.getenv('ALLOWED_HOSTS')]
 
-DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.getenv('PG_DB_NAME'),
-            'USER': os.getenv('PG_USER'),
-            'PASSWORD': os.getenv('PG_PASSWORD'),
-            'HOST': os.getenv('PG_HOST'),
-            'PORT': os.getenv('PG_PORT')
-        }
-}
+DATABASES = {'default': dj_database_url.config(conn_max_age=600, ssl_require=True)}
 
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
